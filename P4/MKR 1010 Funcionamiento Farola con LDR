@@ -1,0 +1,36 @@
+// ALUMNOS: Adrian Benitez Roldan y Alejandro Montes Cantero
+
+/* 
+Programar el Arduino MKR 1010 haciendo uso de un sensor LDR y un LED al objeto de realizar
+un control de luces crepuscular, simulando el encendido y apagado automático de las farolas 
+en una ciudad
+*/
+
+
+const int LDR_PIN = A0;  // Pin analógico donde está conectado el LDR
+const int LED_PIN = 9;   // Pin digital donde está conectado el LED
+int ldrValue = 0;        // Variable para almacenar el valor del LDR
+int threshold = 800;     // Umbral para encender el LED
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT);  // Configura el pin del LED como salida
+  Serial.begin(9600);        // Inicializa la comunicación serial a 9600 bps
+}
+
+void loop() {
+  ldrValue = analogRead(LDR_PIN);  // Lee el valor del LDR
+
+  Serial.print("LDR Value: ");
+  Serial.println(ldrValue);  // Muestra el valor del LDR en el Monitor Serial
+
+  // Verifica si el valor del LDR es menor que el umbral
+  if (ldrValue < threshold) {
+    digitalWrite(LED_PIN, HIGH);  // Enciende el LED
+    Serial.println("LED ON");
+  } else {
+    digitalWrite(LED_PIN, LOW);   // Apaga el LED
+    Serial.println("LED OFF");
+  }
+
+  delay(1000);  // Espera 1 segundo antes de repetir el bucle
+}
