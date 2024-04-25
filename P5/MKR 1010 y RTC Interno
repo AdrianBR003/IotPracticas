@@ -1,0 +1,87 @@
+
+// ALUMNOS: Adrian Benitez Roldan y Alejandro Montes Cantero
+
+/* 
+Programación del dispositivo de IoT Arduino MKR1010 y el RTC interno que permite realizar
+una temporización de encendido de luces, simulando el encendido y apagado automático 
+de las farolas en una ciudad, utilizando un LED
+*/
+
+
+#include <RTCZero.h>
+
+RTCZero rtc;
+
+const int LED_PIN = 9;  // Pin digital donde está conectado el LED
+
+
+const byte seconds = 40;
+
+const byte minutes = 42;
+
+const byte hours = 19;
+
+
+const byte day = 24;
+
+const byte month = 4;
+
+const byte year = 24;
+
+int cont = 0; 
+
+void setup()
+{
+
+  pinMode(LED_PIN, OUTPUT); 
+
+  Serial.begin(9600);
+
+  rtc.begin(); // initialize RTC 24H format
+
+  rtc.setTime(hours, minutes, seconds);
+
+  rtc.setDate(day, month, year);
+
+  rtc.setAlarmTime(19, 43, 0);
+
+  rtc.enableAlarm(rtc.MATCH_HHMMSS);
+
+  
+}
+
+void loop()
+{
+  delay(5000);
+
+  if(cont == 0){
+    Serial.print("Dispositivo Programado! Se encendera a las ");
+    Serial.print(rtc.getAlarmHours());
+    Serial.print(":");
+    Serial.print(rtc.getAlarmMinutes());
+    Serial.println(""); 
+    cont=1; 
+  }
+
+  Serial.println("");
+  Serial.print("Hora Actual: ");
+  Serial.print(rtc.getHours());
+  Serial.print(":");
+  Serial.print(rtc.getMinutes());
+  Serial.print(":");
+  Serial.print(rtc.getSeconds());
+
+
+  rtc.attachInterrupt(alarmMatch);
+  
+
+}
+
+void alarmMatch()
+{
+  Serial.println("");
+  Serial.println("Encendido!!");
+  digitalWrite(LED_PIN, HIGH);  // Enciende el LED
+  delay(30000);
+  digitalWrite(LED_PIN, LOW);  
+}
