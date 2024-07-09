@@ -1,5 +1,15 @@
-** Prácticas realizadas por: Adrián Benítez Roldán @AdrianBR003 y Alejandro Montes Cantero @alexmncn
+## Prácticas realizadas por: 
+Adrián Benítez Roldán [@AdrianBR003](https://github.com/AdrianBR003)
 
-** Waspmote - Arduino
+Alejandro Montes Cantero [@alexmncn](https://www.github.com/alexmncn)
 
-** Asignatura IoT, Escuela Politécnica Superior Linares, UJA
+&nbsp;&nbsp;
+
+## Dispositivos Usados:
+Waspmote - Arduino
+
+&nbsp;&nbsp;
+
+> Asignatura IoT.
+> 
+> Escuela Politécnica Superior Linares (UJA)
