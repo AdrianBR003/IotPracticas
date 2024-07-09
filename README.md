@@ -1,4 +1,4 @@
-** Prácticas realizadas por: Adrián Benítez Roldán @AdrianBR003 y Alejandro Montes Cantero @alexmncn78
+** Prácticas realizadas por: Adrián Benítez Roldán @AdrianBR003 y Alejandro Montes Cantero @alexmncn
 
 ** Waspmote - Arduino
 
